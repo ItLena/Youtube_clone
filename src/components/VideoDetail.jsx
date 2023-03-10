@@ -9,18 +9,17 @@ import { fetchFromAPI } from '../utils/fetchFromAPI';
 const VideoDetail = () => {
   const {id} = useParams();
   const [videoDetail, setVideoDetail] = useState([]);
-  const {snippet: {title}} = videoDetail;
+  // const {snippet: {title}} = videoDetail;
   useEffect(()=>{
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
-    .then((data)=> setVideoDetail(data.items[0]))
+      .then((data) => setVideoDetail(data.items[0]))
   },[id])
 
   return (
     <Box minHeight='95vh'>
     <Box sx={{width: '100%', position: 'sticky', top: '90px'}}>
-      <ReactPlayer url={`http://www.youtube.com/watch?v=${id}`}
-       className='react-player' controls/> 
-         {/* <h3 style={{color: 'whitesmoke'}}>{title}</h3>     */}
+      <ReactPlayer  url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls/> 
+         {/* <h3 style={{color: 'whitesmoke'}}>{videoDetail.title}</h3>     */}
     </Box> 
    
     </Box>
